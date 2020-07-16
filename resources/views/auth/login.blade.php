@@ -18,19 +18,16 @@
 
                             <div class="form-group">
                                 <label for="inputEmail4">{{ __('E-Mail Address') }}</label>
-                                <!-- <input type="email" class="form-control" id="inputEmail4" placeholder="Email"> -->
-                                
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            
+
                             <div class="form-group">
-                                <label for="inputPassword4">{{ __('Password') }}</label>                               
+                                <label for="inputPassword4">{{ __('Password') }}</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -45,28 +42,26 @@
                             </div>
 
                             <div class="form-row">
+
                                 <div class="form-group col pr-0">
-                                    <div class="custom-control custom-checkbox">                                        
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="remember">{{ __('Remember Me') }}</label>
                                     </div>
                                 </div>
 
+                                @if (Route::has('password.request'))
                                 <div class="form-group col ">
-                                    <a href="forget-psw.html" class="btn-text forget-pass">forget password</a>
+                                  <a href="{{ route('password.request') }}" class="btn-text forget-pass">{{ __('Forgot Your Password?') }}</a>
                                 </div>
+                                @endif
 
                             </div>
 
                             <button type="submit" class="btn btn-primary w-100">{{ __('Login') }}</button>
-                            
-                            @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
 
-                            <p>Don't have an accouant yet <a href="register.html" class="btn-text">Register Here</a></p>
+
+                            <p>Don't have an accouant yet <a href="{{ route('register') }}" class="btn-text">Register Here</a></p>
 
 
                         </form>
