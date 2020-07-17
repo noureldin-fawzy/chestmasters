@@ -35,14 +35,11 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-
                                 <small id="passwordHelpBlock" class="form-text text-muted d-none">
                                     Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                                 </small>
                             </div>
-
                             <div class="form-row">
-
                                 <div class="form-group col pr-0">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -55,23 +52,14 @@
                                   <a href="{{ route('password.request') }}" class="btn-text forget-pass">{{ __('Forgot Your Password?') }}</a>
                                 </div>
                                 @endif
-
                             </div>
-
                             <button type="submit" class="btn btn-primary w-100">{{ __('Login') }}</button>
 
-
                             <p>Don't have an accouant yet <a href="{{ route('register') }}" class="btn-text">Register Here</a></p>
-
-
                         </form>
                     </div>
                 </div>
-
-
             </div>
-
-
         </div>
     </div>
 </div>
