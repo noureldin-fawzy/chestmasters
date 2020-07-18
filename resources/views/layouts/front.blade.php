@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Website Name</title>
     <!-------------------- Main Styles CSS ----------------------->
     <link href="{{ asset('theme/assets/Content/en/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="{{ asset('theme/assets/Content/en/fonts/fonts.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('theme/assets/Content/en/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
-    <!-------------------- Custom CSS ----------------------->
+
+    @yield('special-styles')
+
     <link href="{{ asset('theme/assets/Content/en/css/style.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -68,8 +72,8 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('front.home') }}">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="about.html">about us</a>
@@ -119,13 +123,24 @@
 
     <!-------------------- Javascript files ----------------------->
     <script type="text/javascript" src="{{ asset('theme/assets/Scripts/jquery-3.5.min.js') }}"></script>
+    <script>
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/Scripts/bootstrap.min.js') }}"></script>
 
     @yield('special-scripts')
 
     <script type="text/javascript" src="{{ asset('theme/assets/Scripts/scripts.js') }}"></script>
-    <!--------------------end body ----------------------->
+    <script>
+      jQuery(document).ready(function() {
+        jQuery('li.nav-item a[href="'+ window.location.href +'"]').parent().addClass('active');
+      });
+    </script>
 
 </body>
 </html>

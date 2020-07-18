@@ -8,12 +8,18 @@ Route::group(['namespace' => 'Front', 'as' => 'front.'], function () {
     // Public Routes
     Route::get('/', 'FrontController@index')->name('home');
 
-
     // Authenticated Routes
     Route::middleware(['auth'])->group(function () {
-        Route::get('/quiz', function(){
-          echo 'Hello Quiz';
-        })->name('quiz');
+
+      Route::get('/test/{quiz}', 'SolutionController@test');
+
+      Route::get('/quiz', 'QuizController@index')->name('quiz');
+
+      Route::post('/solution/submit', 'SolutionController@submit')->name('ajax.solution.submit');
+      Route::post('/solution/{quiz}', 'SolutionController@create')->name('ajax.solution.create');
+      Route::post('/solution/question/submit', 'SolutionController@submitQuestion')->name('ajax.question.submit');
+
+      Route::post('/quiz/question', 'QuizController@getNextQuestion')->name('ajax.question.next');
     });
 
 });

@@ -11,4 +11,10 @@ class Question extends Model
     {
         return $query->where('active', 1);
     }
+
+    # Relationship
+    public function answers()
+    {
+        return $this->hasMany('App\Models\Answer');
+    }
 }
