@@ -82,7 +82,7 @@
                                     <a class="nav-link" href="{{ route('front.quiz') }}">quiz</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="leaderboard.html">leaderboard</a>
+                                    <a class="nav-link" href="{{ route('front.leaderboard') }}">leaderboard</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">contact us</a>

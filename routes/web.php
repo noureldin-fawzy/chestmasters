@@ -7,6 +7,9 @@ Route::group(['namespace' => 'Front', 'as' => 'front.'], function () {
 
     // Public Routes
     Route::get('/', 'FrontController@index')->name('home');
+    Route::get('/leaderboard', 'LeaderboardController@index')->name('leaderboard');
+
+    Route::get('/leaderboard/filter/months', 'LeaderboardController@months')->name('ajax.filter.months');
 
     // Authenticated Routes
     Route::middleware(['auth'])->group(function () {
