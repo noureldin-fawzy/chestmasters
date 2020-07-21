@@ -9,7 +9,7 @@ Route::group(['namespace' => 'Front', 'as' => 'front.'], function () {
     Route::get('/', 'FrontController@index')->name('home');
     Route::get('/leaderboard', 'LeaderboardController@index')->name('leaderboard');
 
-    Route::get('/leaderboard/filter/months', 'LeaderboardController@months')->name('ajax.filter.months');
+    Route::post('/leaderboard/filter', 'LeaderboardController@filter')->name('ajax.leaderboard.filter');
 
     // Authenticated Routes
     Route::middleware(['auth'])->group(function () {

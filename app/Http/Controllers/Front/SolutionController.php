@@ -88,6 +88,9 @@ class SolutionController extends Controller
         $solution = Solution::find($solution_id);
         $solution->questions()->attach($question_id, ['answer_id' => $answer->id, 'points' => $answer->points ]);
 
+        $solution->score = $solution->score + $answer->points;
+        $solution->save();
+        
         return true;
       } catch (\Exception $e) {
           return false;

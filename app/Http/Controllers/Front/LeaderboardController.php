@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
+use DB;
+use \Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
 
 use App\Models\Quiz;
 
@@ -17,11 +18,11 @@ class LeaderboardController extends Controller
 
     public function index()
     {
-        $years = Quiz::select(DB::raw('YEAR(`start_at`) years'))->active()->groupBy('years')->orderBy('start_at', 'DESC')->get()->pluck('years')->toArray();
+        $years = Quiz::getStartAtYears();
         foreach ($years as $year) {
-          $months =  Quiz::select(DB::raw('MONTHNAME(`start_at`) months'))->active()->whereRaw("(YEAR(`start_at`)) = $year")->groupBy('months')->orderBy('start_at', 'DESC')->get()->pluck('months')->toArray();
+          $months =  Quiz::getStartAtMonths($year);
           foreach ($months as $month) {
-            $days = Quiz::select(DB::raw('DAY(`start_at`) days'))->active()->whereRaw("(MONTHNAME(`start_at`)) = '$month' ")->groupBy('days')->orderBy('start_at', 'DESC')->get()->pluck('days')->toArray();
+            $days = Quiz::getStartAtDays($month);
             $response[$year][$month] = $days;
           }
         }
@@ -31,41 +32,15 @@ class LeaderboardController extends Controller
         ]);
     }
 
-    public function months(Request $request){
+    public function filter(Request $request){
       $year = $request->year;
+      $month = $request->month;
+      $day = $request->day;
 
-      $response = [
-        'success' => false,
-        'data' => null,
-        'msg' => ""
-      ];
-      try {
-        $months =  Quiz::select(DB::raw('MONTHNAME(`start_at`) months'))
-                        ->active()
-                        ->whereRaw("(YEAR(`start_at`)) = $year")
-                        ->groupBy('months')
-                        ->orderBy('start_at', 'DESC')
-                        ->get()->pluck('months')->toArray();
+      $quiz = Quiz::getByDate($year, $month, $day);
 
-        $response['success'] = true;
-        $response['data'] = $months;
+      $data['solutions'] = $quiz->solutions()->with('user')->orderBy('score', 'DESC')->orderBy('finish_at', 'ASC')->paginate(5);
+      return \View::make("front.leaderboard-partial", $data)->renderSections()['content'];
 
-      } catch (\Exception $e) {
-        $response['msg'] = $e->getMessage();
-      }
-
-      return $response;
     }
-
-    /*
-    public function days(Request $request){
-
-      return Quiz::select(DB::raw('MONTHNAME(`start_at`) months'))
-                    ->active()
-                    ->whereRaw("(YEAR(`start_at`)) = $year")
-                    ->groupBy('months')
-                    ->orderBy('start_at', 'DESC')
-                    ->get()->pluck('months')->toArray();
-    }
-*/
 }

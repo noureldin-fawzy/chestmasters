@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Solution extends Model
 {
   protected $guarded = [];
-  
+
   public function quiz()
   {
     return $this->belongsTo('App\Models\Quiz');
@@ -21,6 +21,6 @@ class Solution extends Model
 
   public function questions()
   {
-      return $this->belongsToMany('App\Models\Question');
+      return $this->belongsToMany('App\Models\Question')->withPivot(['answer_id', 'points']);
   }
 }
