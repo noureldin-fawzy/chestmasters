@@ -111,7 +111,6 @@
 
   @include('front.organizer-container')
 
-  <!--------------------end wrapper -------------------------->
 </div>
 
 @endsection

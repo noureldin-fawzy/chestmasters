@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 /* CSS Document */
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -228,7 +228,7 @@ ul {
         opacity: .7;
     }
 
-    
+
 
 .signup-now .btn {
     margin-bottom: 1.5rem;
@@ -361,6 +361,7 @@ option {
 
 .navbar-light .navbar-nav .nav-item {
     transition: all .5s;
+    border-bottom: .5rem solid #fff;
 }
 
 @media (max-width:991px) {

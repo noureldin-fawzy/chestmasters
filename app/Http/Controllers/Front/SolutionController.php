@@ -130,15 +130,16 @@ class SolutionController extends Controller
 
     // Generate PDF
     public function createPDF(Solution $solution) {
-// echo base64_encode(file_get_contents(asset('theme/assets/Content/en/images/logo-2.png')));
+      // echo base64_encode(file_get_contents(asset('theme/assets/Content/en/images/logo-2.png')));
       // retreive records from db
+      $quiz = $solution->quiz()->with('questions.answers')->first();
+      $solution = $solution->with('questions')->first();
 
-      // $data = [
-      //   'quiz' => $solution->quiz()->with('questions.answers')->first(),
-      //   'solution' => $solution->with('questions')->first()
-      // ];
-      
-      $data = [];
+      $data = [
+        'quiz' => $quiz,
+        'solution' => $solution
+      ];
+      // dd($data);
       // share data to view
       $pdf = PDF::loadView('pdf.pdf_view', $data);
 

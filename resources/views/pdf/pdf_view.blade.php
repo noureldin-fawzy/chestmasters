@@ -1,14 +1,10 @@
 <!doctype html>
 <html>
-
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta charset="UTF-8">
     <title>Website Name</title>
-
     <style>
         html {
-            font-family: sans-serif;
             line-height: 1.15;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
@@ -16,117 +12,76 @@
 
         body {
             direction: ltr;
-            font-family: sourcer;
             text-transform: capitalize;
             font-size: 1.5rem;
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
             font-size: 1rem;
             font-weight: 400;
             line-height: 1.5;
             color: #212529;
             text-align: left;
-            background-color: #f5f5f5;
             height: 100%;
             width: 100%;
-        }
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 
-        @media (min-width:768px) {
-            .col-md-4 {
-                -ms-flex: 0 0 31.333333%;
-                flex: 0 0 31.333333%;
-                max-width: 31.333333%;
-            }
-
-            .col-md-6 {
-                -ms-flex: 0 0 47%;
-                flex: 0 0 47%;
-                max-width: 47%;
-            }
-
-            .col-md-1 {
-                -ms-flex: 0 0 8.333333%;
-                flex: 0 0 8.333333%;
-                max-width: 8.333333%;
-            }
-        }
-
-        .row {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
         }
 
         .inner-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             text-align: center;
             margin-top: 0;
         }
 
         .inner-page {
             margin-bottom: 3rem;
-            border-top: .4rem solid #525ca3;
         }
 
-        .container {
-            width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-        @media (min-width: 320px) {
-            .container {
-                max-width: calc(100% - 30px);
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1140px;
-            }
-        }
-
-
-
-        .inner.page-content {
-            background: whitesmoke;
-        }
-
-        .img-fluid {
-            max-width: 100%;
-            height: auto;
+        table {
+            text-align: left;
         }
 
         .login-img {
             margin-bottom: 1.5rem;
+            max-width: 160px;
         }
 
         .quiz-section {
-            border-bottom: 1px solid #cecece;
-            margin-bottom: 1.5rem;
-            justify-content: center;
+            margin-bottom: 10px;
         }
 
         .right-answer {
             border: .1rem solid #ffa41b;
-            padding: .5rem;
-            border-radius: 1.5rem;
+            padding:10px;
+            border-radius: 15px;
             background: #c4f1de;
+        }
+
+        .quiz-section table{
+            border-bottom: 1px solid #cecece;
+            margin-bottom:10px;
         }
 
         .custom-control.custom-radio {
             margin-bottom: 1.5rem;
+            display:block;
+            line-height:5px;
         }
 
         .question-item {
             font-weight: 600;
-            margin-bottom: 3rem;
+            margin-bottom: 15px;
+            text-align:left;
         }
+        .custom-radio{
+            text-align:left;
+            display:block;
+
+        }
+        .custom-control-input , .custom-control-label{
+            margin-right:5px;
+            line-height:10px;
+        }
+
 
         .brand-dsk {
             max-width: 18rem;
@@ -134,21 +89,22 @@
         }
 
         .score {
-            display: block;
-            text-align: center;
+            text-align:center;
+            display:block;
         }
 
         .quiz-page {
-            padding: 1.5rem;
             background: white;
             margin-top: 2rem;
         }
-
+        .custom-control-label{
+            margin-top:5px;
+        }
         .state {
             max-width: 3rem;
+            max-height:3rem;
             margin: 0 auto;
             display: block;
-            text-align: center;
         }
 
         .total-score {
@@ -157,123 +113,101 @@
             font-weight: 600;
         }
 
-        .col-md-4,
-        .col-md-6,
-        .col-md-1 {
-            position: relative;
-            width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
+
+        .logo-container {
+            text-align: center;
+            background: #ffffff;
+            padding: .5rem;
+            box-shadow: 2px 4px 5px 0px #00000012;
+            height: 85px;
+            border-bottom: .4rem solid #525ca3;
+            margin-bottom:5px;
+
+        }
+        .state-container{
+            max-width:60px;
+            text-align:center;
         }
 
-        @media (max-width:767px) {
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
 
-            .score,
-            .state {
-                display: inline-block;
-            }
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        td{
+            padding:2.5px
 
-            .score {
-                float: right;
-                margin-top: 1rem;
-            }
-
-            .quiz-page {
-                padding: 1.5rem;
-            }
+        }
+        input[type="radio" i] {
+            background-color: initial;
+            cursor: default;
+            appearance: radio;
+            box-sizing: border-box;
+            margin: 3px 3px 0px 5px;
+            padding: initial;
+            border: initial;
         }
     </style>
-
 </head>
 
 <body>
     <div class="inner-page">
-        <div style="text-align: center;
-                    background: #ffffff;
-                    padding:.5rem;
-                    box-shadow: 2px 4px 5px 0px #00000012;">
+        <div class="logo-container">
             <img src="{{ asset('theme/assets/Content/en/images/logo-2.png') }}" class="img-fluid brand-dsk">
         </div>
-        <div class="container">
             <div class="quiz-page">
-                <h2 class="inner-title">quiz name</h2>
-                <div class="row quiz-section">
-                    <div class="col-md-4">
-                        <img src="{{ asset('theme/assets/Content/en/images/leader.jpg') }}" class="img-fluid login-img">
-                    </div>
-                    <div class="col-md-6">
-                        <form>
-                            <div class="question-item">What heart condition is Turner’s syndrome associated with?</div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"
-                                    value="customEx">
-                                <label class="custom-control-label" for="customRadio">Custom radio</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="customRadio2" name="example1"
-                                    value="customEx">
-                                <label class="custom-control-label" for="customRadio2">Custom radio</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="customRadio3" name="example1"
-                                    value="customEx">
-                                <label class="custom-control-label" for="customRadio3">Custom radio</label>
-                            </div>
-                            <div class="custom-control custom-radio right-answer">
-                                <input type="radio" class="custom-control-input" id="customRadio4" name="example1"
-                                    value="customEx">
-                                <label class="custom-control-label" for="customRadio4">Custom radio</label>
-                            </div>
-                        </form>
+                <h2 class="inner-title">{{ $quiz->title }}</h2>
+                <div class="quiz-section">
 
-                    </div>
-                    <div class="col-md-1">
-                        <img src="{{ asset('theme/assets/Content/en/images/correct.png') }}" class="img-fluid state">
-                        <span class="score"> score : 1</span>
+                  @foreach($quiz->questions as $k => $question)
 
-                    </div>
-                </div>
-                <div class="row quiz-section">
-                    <div class="col-md-4">
-                        <img src="{{ asset('theme/assets/Content/en/images/leader.jpg') }}" class="img-fluid login-img">
-                    </div>
-                    <div class="col-md-6">
-                        <form>
-                            <div class="question-item">What heart condition is Turner’s syndrome associated with?</div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"
-                                    value="customEx">
-                                <label class="custom-control-label" for="customRadio">Custom radio</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="customRadio2" name="example1"
-                                    value="customEx">
-                                <label class="custom-control-label" for="customRadio2">Custom radio</label>
-                            </div>
-                            <div class="custom-control custom-radio  right-answer">
-                                <input type="radio" class="custom-control-input" id="customRadio3" name="example1"
-                                    value="customEx">
-                                <label class="custom-control-label" for="customRadio3">Custom radio</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="customRadio4" name="example1"
-                                    value="customEx">
-                                <label class="custom-control-label" for="customRadio4">Custom radio</label>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-1 ">
-                        <img src="{{ asset('theme/assets/Content/en/images/wrong.png') }}" class="img-fluid state">
-                        <span class="score"> score : 0</span>
-                    </div>
-                </div>
-                <div class="total-score">
-                    <p> total score : 10 </p>
-                </div>
+                  @php
+                    $questionAnswer = $solution->questions->where('id', $question->id)->first();
+                    $questionPoints = $questionAnswer->pivot->points;
 
+                    $correctImage = asset('theme/assets/Content/en/images/correct.png');
+                    $wrongImage = asset('theme/assets/Content/en/images/wrong.png');
+
+                  @endphp
+
+                    <table>
+                        <tr>
+                            <td style="width: 100px">
+                              <img src="{{ Voyager::image($question->image) }}" class="login-img">
+                            </td>
+                            <td style="width: 440px">
+                                <form class="question">
+                                    <div class="question-item">{{ $question->question }} </div>
+
+                                    @foreach($question->answers as $i => $answer)
+                                    <div class="custom-control custom-radio @if($answer->points > 0) right-answer @endif">
+                                        <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
+                                        <label class="custom-control-label" for="customRadio">{{ $answer->answer }}</label>
+                                    </div>
+                                    @endforeach
+
+                                </form>
+                            </td>
+                             <td class="state-container" style="width: 100px">
+                               <img src="{{ $questionPoints > 0 ? $correctImage : $wrongImage }}" class="img-fluid state">
+                              <span class="score"> score : {{ $questionPoints }}</span>
+                            </td>
+                        </tr>
+                    </table>
+                    @endforeach
+
+                  <div class="total-score">
+                      <p> total score : {{ $solution->score }} </p>
+                  </div>
+
+                </div>
             </div>
-
-
         </div>
     </div>
 </body>

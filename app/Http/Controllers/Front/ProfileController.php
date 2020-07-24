@@ -30,14 +30,14 @@ class ProfileController extends Controller
         $solutions = $user->solutions()
                           ->latest()
                           ->whereHas('quiz', function ($query) {
-                            return $query->available();
+                              return $query->available();
                           })->get();
 
         $data = [
           'user' => $user,
           'solutions' => $solutions
         ];
-        
+
         return view('front.profile.show', $data);
     }
 

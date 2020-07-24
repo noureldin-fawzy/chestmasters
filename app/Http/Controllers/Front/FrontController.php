@@ -89,7 +89,6 @@ class FrontController extends Controller
 
     public function showPage(\TCG\Voyager\Models\Page $page)
     {
-
         return view('front.page', [
           'page' => $page
         ]);
