@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use \Carbon\Carbon;
+use PDF;
 
 use App\Models\Quiz;
 use App\Models\Solution;
@@ -49,7 +50,6 @@ class SolutionController extends Controller
       }
 
       return $response;
-        // dd($solutionExist);
     }
 
     public function create(Quiz $quiz)
@@ -90,7 +90,7 @@ class SolutionController extends Controller
 
         $solution->score = $solution->score + $answer->points;
         $solution->save();
-        
+
         return true;
       } catch (\Exception $e) {
           return false;
@@ -114,5 +114,36 @@ class SolutionController extends Controller
       }
 
       return $response;
+    }
+
+    public function show(Solution $solution){
+
+      $quiz = $solution->quiz()->with('questions.answers')->first();
+      $solution = $solution->with('questions')->first();
+
+      return view('front.quiz.result',[
+        'quiz' => $quiz,
+        'solution' => $solution
+      ]);
+
+    }
+
+    // Generate PDF
+    public function createPDF(Solution $solution) {
+// echo base64_encode(file_get_contents(asset('theme/assets/Content/en/images/logo-2.png')));
+      // retreive records from db
+
+      // $data = [
+      //   'quiz' => $solution->quiz()->with('questions.answers')->first(),
+      //   'solution' => $solution->with('questions')->first()
+      // ];
+      
+      $data = [];
+      // share data to view
+      $pdf = PDF::loadView('pdf.pdf_view', $data);
+
+      // download PDF file with download method
+      return $pdf->download('pdf_file.pdf');
+
     }
 }

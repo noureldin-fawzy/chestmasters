@@ -76,43 +76,49 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputState">Country</label>
-                            <select id="inputState" class="form-control">
+                            <label for="country">Country</label>
+                            <select id="country" class="form-control" name="country">
                                 <option value="Egypt" selected>Egypt</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputState">Specialty</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>test</option>
-                                <option selected>test2</option>
+                            <label for="specialty">Specialty</label>
+                            <select class="form-control" id="specialty" name="specialty">
+                              @foreach(\App\Models\Specialty::active()->get() as $specialty)
+                                <option value="{{ $specialty->title }}" {{ old('specialty') == $specialty->title ? 'selected' : '' }} >
+                                  {{ $specialty->title }}
+                                </option>
+                              @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputState">Graduation Year</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>2014</option>
-                                <option selected>2016</option>
-                                <option selected>2020</option>
+                            <label for="graduationYear">Graduation Year</label>
+                            <select id="graduationYear" class="form-control" name="graduationYear">
+                              @for($i = date('Y'); $i >= 1900; $i--)
+                                <option value="{{ $i }}" {{ old('graduationYear') == $i ? 'selected' : '' }} >
+                                  {{ $i }}
+                                </option>
+                              @endfor
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputState">Education Degree</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>test</option>
-                                <option selected>test2</option>
+                            <label for="educationDegree">Education Degree</label>
+                            <select id="educationDegree" class="form-control" name="educationDegree">
+                              @foreach(\App\Models\EducationDegree::active()->get() as $educationDegree)
+                                <option value="{{ $educationDegree->title }}" {{ old('educationDegree') == $educationDegree->title ? 'selected' : '' }} >
+                                  {{ $educationDegree->title }}
+                                </option>
+                              @endforeach
                             </select>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Society Membership ID</label>
-
-                            <input type="number" class="form-control" id="inputEmail4" placeholder="Society Membership ID">
-
+                            <label for="societyMembershipId">Society Membership ID</label>
+                            <input type="number" class="form-control @error('societyMembershipId') is-invalid @enderror" id="societyMembershipId" placeholder="Society Membership ID" name="societyMembershipId">
                             <div>
                             </div>
                         </div>

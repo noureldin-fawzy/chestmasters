@@ -16,7 +16,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'last_name', 'phone_number', 'active', 'country', 'specialty', 'graduation_year', 'education_degree', 'society_membership',
     ];
 
     /**
@@ -36,4 +36,9 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function solutions()
+    {
+        return $this->hasMany('App\Models\Solution');
+    }
 }

@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>Website Name</title>
+
+    <style>
+    html {
+        font-family: sans-serif;
+        line-height: 1.15;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        direction: ltr;
+        font-family: sourcer;
+        text-transform: capitalize;
+        font-size: 1.5rem;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #f5f5f5;
+        height: 100%;
+        width: 100%;
+    }
+
+    @media (min-width:768px) {
+        .col-md-4 {
+            -ms-flex: 0 0 31.333333%;
+            flex: 0 0 31.333333%;
+            max-width: 31.333333%;
+        }
+
+        .col-md-6 {
+            -ms-flex: 0 0 47%;
+            flex: 0 0 47%;
+            max-width: 47%;
+        }
+
+        .col-md-1 {
+            -ms-flex: 0 0 8.333333%;
+            flex: 0 0 8.333333%;
+            max-width: 8.333333%;
+        }
+    }
+
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .inner-title {
+        font-size: 2.2rem;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .inner-page {
+        margin-bottom: 3rem;
+        border-top: .4rem solid #525ca3;
+    }
+
+    .container {
+        width: 1200px;
+        max-width: 1200px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .inner.page-content {
+        background: whitesmoke;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .login-img {
+        margin-bottom: 1.5rem;
+    }
+
+    .quiz-section {
+        border-bottom: 1px solid #cecece;
+        margin-bottom: 1.5rem;
+        justify-content: center;
+    }
+
+    .right-answer {
+        border: .1rem solid #ffa41b;
+        padding: .5rem;
+        border-radius: 1.5rem;
+        background: #c4f1de;
+    }
+
+    .custom-control.custom-radio {
+        margin-bottom: 1.5rem;
+    }
+
+    .question-item {
+        font-weight: 600;
+        margin-bottom: 3rem;
+    }
+
+    .brand-dsk {
+        max-width: 18rem;
+        margin: 0 auto;
+    }
+
+    .score {
+        display: block;
+        text-align: center;
+    }
+
+    .quiz-page {
+        padding: 1.5rem;
+        background: white;
+        margin-top: 2rem;
+    }
+
+    .state {
+        max-width: 3rem;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+    }
+
+    .total-score {
+        text-align: right;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .col-md-4,
+    .col-md-6,
+    .col-md-1 {
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    @media (max-width:767px) {
+
+        .score,
+        .state {
+            display: inline-block;
+        }
+
+        .score {
+            float: right;
+            margin-top: 1rem;
+        }
+
+        .quiz-page {
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <div class="inner-page">
+        <div style="text-align: center;
+                    background: #ffffff;
+                    padding:.5rem;
+                    box-shadow: 2px 4px 5px 0px #00000012;;">
+            <img src="{{ asset('theme/assets/Content/en/images/logo-2.png') }}" class="img-fluid brand-dsk">
+        </div>
+        <div class="container">
+            <div class="quiz-page">
+                <h2 class="inner-title">quiz name</h2>
+                <div class="row quiz-section">
+                    <div class="col-md-4">
+                        <img src="{{ asset('theme/assets/Content/en/images/leader.jpg') }}" class="img-fluid login-img">
+                    </div>
+                    <div class="col-md-6">
+                        <form>
+                            <div class="question-item">What heart condition is Turner’s syndrome associated with?</div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"
+                                    value="customEx">
+                                <label class="custom-control-label" for="customRadio">Custom radio</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio2" name="example1"
+                                    value="customEx">
+                                <label class="custom-control-label" for="customRadio2">Custom radio</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio3" name="example1"
+                                    value="customEx">
+                                <label class="custom-control-label" for="customRadio3">Custom radio</label>
+                            </div>
+                            <div class="custom-control custom-radio right-answer">
+                                <input type="radio" class="custom-control-input" id="customRadio4" name="example1"
+                                    value="customEx">
+                                <label class="custom-control-label" for="customRadio4">Custom radio</label>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="col-md-1">
+                        <img src="{{ asset('theme/assets/Content/en/images/correct.png') }}" class="img-fluid state">
+                        <span class="score"> score : 1</span>
+
+                    </div>
+                </div>
+                <div class="row quiz-section">
+                    <div class="col-md-4">
+                        <img src="{{ asset('theme/assets/Content/en/images/leader.jpg') }}" class="img-fluid login-img">
+                    </div>
+                    <div class="col-md-6">
+                        <form>
+                            <div class="question-item">What heart condition is Turner’s syndrome associated with?</div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"
+                                    value="customEx">
+                                <label class="custom-control-label" for="customRadio">Custom radio</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio2" name="example1"
+                                    value="customEx">
+                                <label class="custom-control-label" for="customRadio2">Custom radio</label>
+                            </div>
+                            <div class="custom-control custom-radio  right-answer">
+                                <input type="radio" class="custom-control-input" id="customRadio3" name="example1"
+                                    value="customEx">
+                                <label class="custom-control-label" for="customRadio3">Custom radio</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio4" name="example1"
+                                    value="customEx">
+                                <label class="custom-control-label" for="customRadio4">Custom radio</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-1 ">
+                        <img src="{{ asset('theme/assets/Content/en/images/wrong.png') }}" class="img-fluid state">
+                        <span class="score"> score : 0</span>
+                    </div>
+                </div>
+                <div class="total-score">
+                    <p> total score : 10 </p>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

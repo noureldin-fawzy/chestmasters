@@ -50,7 +50,7 @@ class QuizController extends Controller
           }
         }
 
-        return view('front.quiz',[
+        return view('front.quiz.index',[
           'quizType' => $quizType,
           'quiz' => $quiz
         ]);
@@ -83,7 +83,6 @@ class QuizController extends Controller
             "quiz" => $quiz
           ];
         }
-        return \View::make("front.question", $data)->renderSections()['content'];
-
+        return \View::make("front.quiz.question", $data)->renderSections()['content'];
     }
 }

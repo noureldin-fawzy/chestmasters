@@ -37,7 +37,7 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                     <div class="arrow-up"></div>
 
-                                    <button class="dropdown-item" type="button">profile</button>
+                                    <button class="dropdown-item" type="button" onclick="window.location.href='{{ route('front.user.profile.show') }}'">profile</button>
                                     <button class="dropdown-item" type="button" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                                       Sign out
                                     </button>
@@ -85,7 +85,7 @@
                                     <a class="nav-link" href="{{ route('front.leaderboard') }}">leaderboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">contact us</a>
+                                    <a class="nav-link" href="{{ route('front.contact-us') }}">contact us</a>
                                 </li>
                                 <li class="nav-item d-lg-none">
                                     <a class="nav-link" href="profile.html">profile</a>
@@ -106,7 +106,7 @@
         @yield('content')
 
     </div>
-    <!-------------------- Footer -------------------------->
+
     <footer id="footer">
         <div class="row">
             <div class="col-sm-6 order-sm-2">
@@ -121,7 +121,6 @@
         </div>
     </footer>
 
-    <!-------------------- Javascript files ----------------------->
     <script type="text/javascript" src="{{ asset('theme/assets/Scripts/jquery-3.5.min.js') }}"></script>
     <script>
       $.ajaxSetup({
