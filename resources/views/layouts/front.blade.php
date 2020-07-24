@@ -15,6 +15,7 @@
     @yield('special-styles')
 
     <link href="{{ asset('theme/assets/Content/en/css/style.css') }}" rel="stylesheet" type="text/css">
+
 </head>
 <body>
     <div id="wrap">
@@ -24,8 +25,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="top-list">
-                                <li><a href="#"><i class="lar la-envelope"></i> support@chest-masters.com</a></li>|
-                                <li><a href="#"><i class="las la-phone"></i> 01234567891</a></li>
+
+                                @if(setting('contacts.email') != '')
+                                  <li><a href="mailto:{{ setting('contacts.email') }}"><i class="lar la-envelope"></i> {{ setting('contacts.email') }}</a></li>|
+                                @endif
+
+                                @if(setting('contacts.mobile') != '')
+                                  <li><a href="tel:{{ setting('contacts.mobile') }}"><i class="las la-phone"></i> {{ setting('contacts.mobile') }}</a></li>
+                                @endif
                             </ul>
                         </div>
                         <div class="col-md-6">
@@ -62,9 +69,12 @@
             <div class="sub-header" id="sub-header">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg navbar-light ">
+
+                      @if(setting('site.logo') != '')
                         <a class="navbar-brand" href="{{ route('front.home') }}">
-                            <img src="{{ asset('theme/assets/Content/en/images/logo-2.png') }}" class="img-fluid brand-dsk">
+                            <img src="{{ Voyager::image(setting('site.logo')) }}" class="img-fluid brand-dsk">
                         </a>
+                      @endif
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -76,7 +86,7 @@
                                     <a class="nav-link" href="{{ route('front.home') }}">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about.html">about us</a>
+                                    <a class="nav-link" href="{{ route('front.page', 'about-us') }}">about us</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('front.quiz') }}">quiz</a>
@@ -87,13 +97,26 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('front.contact-us') }}">contact us</a>
                                 </li>
-                                <li class="nav-item d-lg-none">
-                                    <a class="nav-link" href="profile.html">profile</a>
-                                </li>
-                                <li class="nav-item d-lg-none">
-                                    <a class="nav-link" href="#">sign out</a>
-                                </li>
 
+                                @if(Auth::check())
+                                  <li class="nav-item d-lg-none">
+                                      <a class="nav-link" href="{{ route('front.user.profile.show') }}">profile</a>
+                                  </li>
+                                  <li class="nav-item d-lg-none">
+                                      <a class="nav-link" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                        sign out
+                                      </a>
+                                  </li>
+                                  @else
+                                  <li class="nav-item d-lg-none">
+                                      <a class="nav-link" href="{{ route('login') }}">Log in</a>
+                                  </li>
+                                  <li class="nav-item d-lg-none">
+                                      <a class="nav-link" href="{{ route('register') }}">
+                                        Sign up
+                                      </a>
+                                  </li>
+                                  @endif
                             </ul>
 
                         </div>
@@ -109,14 +132,16 @@
 
     <footer id="footer">
         <div class="row">
+          @if(setting('social.facebook') != '')
             <div class="col-sm-6 order-sm-2">
                 <p class="right">
                     Get In Touch
-                    <a href="" class="face-btn"><i class="lab la-facebook-f"></i></a>
+                    <a href="{{ setting('social.facebook') }}" target="_blank" class="face-btn"><i class="lab la-facebook-f"></i></a>
                 </p>
             </div>
+            @endif
             <div class="col-sm-6 order-sm-1">
-                <p>© 2020 chest masters.</p>
+                <p>© {{ date('Y') }} chest masters.</p>
             </div>
         </div>
     </footer>

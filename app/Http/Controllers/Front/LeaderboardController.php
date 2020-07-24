@@ -18,6 +18,7 @@ class LeaderboardController extends Controller
 
     public function index()
     {
+        $response = array();
         $years = Quiz::getStartAtYears();
         foreach ($years as $year) {
           $months =  Quiz::getStartAtMonths($year);
@@ -39,7 +40,7 @@ class LeaderboardController extends Controller
 
       $quiz = Quiz::getByDate($year, $month, $day);
 
-      $data['solutions'] = $quiz->solutions()->with('user')->orderBy('score', 'DESC')->orderBy('finish_at', 'ASC')->paginate(5);
+      $data['solutions'] = $quiz->solutions()->with('user')->orderBy('score', 'DESC')->orderBy('finish_at', 'ASC')->paginate(10);
       return \View::make("front.leaderboard-partial", $data)->renderSections()['content'];
 
     }

@@ -27,10 +27,17 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $solutions = $user->solutions()
+                          ->latest()
+                          ->whereHas('quiz', function ($query) {
+                            return $query->available();
+                          })->get();
+
         $data = [
           'user' => $user,
-          'solutions' => $user->solutions()->latest()->get()
+          'solutions' => $solutions
         ];
+        
         return view('front.profile.show', $data);
     }
 

@@ -2,174 +2,187 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width,, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta charset="UTF-8">
     <title>Website Name</title>
 
     <style>
-    html {
-        font-family: sans-serif;
-        line-height: 1.15;
-        -webkit-text-size-adjust: 100%;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    body {
-        direction: ltr;
-        font-family: sourcer;
-        text-transform: capitalize;
-        font-size: 1.5rem;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #212529;
-        text-align: left;
-        background-color: #f5f5f5;
-        height: 100%;
-        width: 100%;
-    }
-
-    @media (min-width:768px) {
-        .col-md-4 {
-            -ms-flex: 0 0 31.333333%;
-            flex: 0 0 31.333333%;
-            max-width: 31.333333%;
+        html {
+            font-family: sans-serif;
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .col-md-6 {
-            -ms-flex: 0 0 47%;
-            flex: 0 0 47%;
-            max-width: 47%;
+        body {
+            direction: ltr;
+            font-family: sourcer;
+            text-transform: capitalize;
+            font-size: 1.5rem;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: left;
+            background-color: #f5f5f5;
+            height: 100%;
+            width: 100%;
         }
 
-        .col-md-1 {
-            -ms-flex: 0 0 8.333333%;
-            flex: 0 0 8.333333%;
-            max-width: 8.333333%;
+        @media (min-width:768px) {
+            .col-md-4 {
+                -ms-flex: 0 0 31.333333%;
+                flex: 0 0 31.333333%;
+                max-width: 31.333333%;
+            }
+
+            .col-md-6 {
+                -ms-flex: 0 0 47%;
+                flex: 0 0 47%;
+                max-width: 47%;
+            }
+
+            .col-md-1 {
+                -ms-flex: 0 0 8.333333%;
+                flex: 0 0 8.333333%;
+                max-width: 8.333333%;
+            }
         }
-    }
 
-    .row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-    }
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
 
-    .inner-title {
-        font-size: 2.2rem;
-        text-align: center;
-        margin-top: 0;
-    }
+        .inner-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-top: 0;
+        }
 
-    .inner-page {
-        margin-bottom: 3rem;
-        border-top: .4rem solid #525ca3;
-    }
+        .inner-page {
+            margin-bottom: 3rem;
+            border-top: .4rem solid #525ca3;
+        }
 
-    .container {
-        width: 1200px;
-        max-width: 1200px;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-    }
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
 
-    .inner.page-content {
-        background: whitesmoke;
-    }
+        @media (min-width: 320px) {
+            .container {
+                max-width: calc(100% - 30px);
+            }
+        }
 
-    .img-fluid {
-        max-width: 100%;
-        height: auto;
-    }
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
 
-    .login-img {
-        margin-bottom: 1.5rem;
-    }
 
-    .quiz-section {
-        border-bottom: 1px solid #cecece;
-        margin-bottom: 1.5rem;
-        justify-content: center;
-    }
 
-    .right-answer {
-        border: .1rem solid #ffa41b;
-        padding: .5rem;
-        border-radius: 1.5rem;
-        background: #c4f1de;
-    }
+        .inner.page-content {
+            background: whitesmoke;
+        }
 
-    .custom-control.custom-radio {
-        margin-bottom: 1.5rem;
-    }
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
 
-    .question-item {
-        font-weight: 600;
-        margin-bottom: 3rem;
-    }
+        .login-img {
+            margin-bottom: 1.5rem;
+        }
 
-    .brand-dsk {
-        max-width: 18rem;
-        margin: 0 auto;
-    }
+        .quiz-section {
+            border-bottom: 1px solid #cecece;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
 
-    .score {
-        display: block;
-        text-align: center;
-    }
+        .right-answer {
+            border: .1rem solid #ffa41b;
+            padding: .5rem;
+            border-radius: 1.5rem;
+            background: #c4f1de;
+        }
 
-    .quiz-page {
-        padding: 1.5rem;
-        background: white;
-        margin-top: 2rem;
-    }
+        .custom-control.custom-radio {
+            margin-bottom: 1.5rem;
+        }
 
-    .state {
-        max-width: 3rem;
-        margin: 0 auto;
-        display: block;
-        text-align: center;
-    }
+        .question-item {
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
 
-    .total-score {
-        text-align: right;
-        font-size: 1.5rem;
-        font-weight: 600;
-    }
-
-    .col-md-4,
-    .col-md-6,
-    .col-md-1 {
-        position: relative;
-        width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-
-    @media (max-width:767px) {
-
-        .score,
-        .state {
-            display: inline-block;
+        .brand-dsk {
+            max-width: 18rem;
+            margin: 0 auto;
         }
 
         .score {
-            float: right;
-            margin-top: 1rem;
+            display: block;
+            text-align: center;
         }
 
         .quiz-page {
             padding: 1.5rem;
+            background: white;
+            margin-top: 2rem;
         }
-    }
-</style>
+
+        .state {
+            max-width: 3rem;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+
+        .total-score {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .col-md-4,
+        .col-md-6,
+        .col-md-1 {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        @media (max-width:767px) {
+
+            .score,
+            .state {
+                display: inline-block;
+            }
+
+            .score {
+                float: right;
+                margin-top: 1rem;
+            }
+
+            .quiz-page {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 
 </head>
 
@@ -178,7 +191,7 @@
         <div style="text-align: center;
                     background: #ffffff;
                     padding:.5rem;
-                    box-shadow: 2px 4px 5px 0px #00000012;;">
+                    box-shadow: 2px 4px 5px 0px #00000012;">
             <img src="{{ asset('theme/assets/Content/en/images/logo-2.png') }}" class="img-fluid brand-dsk">
         </div>
         <div class="container">

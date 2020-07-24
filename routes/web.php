@@ -7,7 +7,10 @@ Route::group(['namespace' => 'Front', 'as' => 'front.'], function () {
 
     // Public Routes
     Route::get('/', 'FrontController@index')->name('home');
+
     Route::get('/contact-us', 'FrontController@contactUs')->name('contact-us');
+    Route::post('/contact-us', 'FrontController@sendMessage')->name('send-contact-us');
+
     Route::get('/leaderboard', 'LeaderboardController@index')->name('leaderboard');
     Route::post('/leaderboard/filter', 'LeaderboardController@filter')->name('ajax.leaderboard.filter');
 
@@ -34,3 +37,5 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Auth::routes();
+
+Route::get('/{page:slug}', 'Front\FrontController@showPage')->name('front.page');

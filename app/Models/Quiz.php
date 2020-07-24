@@ -30,6 +30,7 @@ class Quiz extends Model
     {
         return self::select(DB::raw('YEAR(`start_at`) years'))
                     ->active()
+                    ->available()
                     ->groupBy('years')
                     ->orderBy('start_at', 'DESC')
                     ->get()->pluck('years')->toArray();
@@ -39,6 +40,7 @@ class Quiz extends Model
     {
         return self::select(DB::raw('MONTHNAME(`start_at`) months'))
                     ->active()
+                    ->available()
                     ->whereRaw("(YEAR(`start_at`)) = $year")
                     ->groupBy('months')
                     ->orderBy('start_at', 'DESC')
@@ -49,6 +51,7 @@ class Quiz extends Model
     {
         return self::select(DB::raw('DAY(`start_at`) days'))
                     ->active()
+                    ->available()
                     ->whereRaw("(MONTHNAME(`start_at`)) = '$month' ")
                     ->groupBy('days')
                     ->orderBy('start_at', 'DESC')
@@ -57,10 +60,9 @@ class Quiz extends Model
 
     public static function getByDate($year, $month, $day)
     {
-      return self::active()
+      return self::active()->available()
                   ->whereYear('start_at', '=', $year)
-                  ->whereRaw("(MONTHNAME(`start_at`)) = '$month' ")
-                  // ->whereMonth('start_at', '=', $month)
+                  ->whereRaw("(MONTHNAME(`start_at`)) = '$month' ")                  
                   ->whereDay('start_at', '=', $day)->first();
     }
 
@@ -68,6 +70,12 @@ class Quiz extends Model
     public function scopeActive($query)
     {
         return $query->where('active', 1);
+    }
+
+    public function scopeAvailable($query)
+    {
+        $now = \Carbon\Carbon::now()->toDateTimeString();
+        return $query->where('available_until', '<', $now);
     }
 
     # Relationship

@@ -13,14 +13,8 @@
                     <span class="challeng-name"> {{ $solution->user->name . ' ' . $solution->user->last_name }} </span>
                     <span class="score">{{ $solution->score }}</span>
 
-                    @php
-                      $start  = new \Carbon\Carbon($solution->start_at);
-                      $end    = new \Carbon\Carbon($solution->finish_at);
-
-                      $diff_in_seconds = $end->diffInSeconds($start);
-
-                    @endphp
-                    <span class="time-taken">{{ gmdate("i:s", $diff_in_seconds) }} min</span>
+                    @php $time = new \Carbon\Carbon($solution->finish_at); @endphp
+                    <span class="time-taken">{{ $time->format('h:i A') }}</span>
                 </p>
             </div>
             @endforeach
